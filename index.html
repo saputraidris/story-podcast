@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Story Podcast</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lobster&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 20px 0;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.0rem;
+            padding: 4px 4px;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+        }
+
+        header a:hover {
+            color: #121212;
+            background-color: gold;
+            transform: scale(1.1);
+        }
+
+        .content {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in-out forwards;
+        }
+
+        #home {
+            background: url('home.jpg') no-repeat center center/cover;
+        }
+
+        #podcast1, #podcast2 {
+            background-color: #1a1a1a;
+            padding: 40px 20px;
+        }
+
+        h1, h2 {
+            font-family: 'Lobster', cursive;
+            color: gold;
+            font-size: 2.0rem; /* Ukuran header lebih kecil */
+            margin:10px
+            
+        }
+
+        .music-list {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .music-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .music-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .music-item button {
+            margin-left: auto;
+            padding: 8px 20px;
+            background-color: gold;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .music-item button:hover {
+            background-color: orange;
+        }
+
+        .btn-aesthetic {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            color: white;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .btn-aesthetic:hover {
+            background: linear-gradient(45deg, #ff9900, #ffcc00);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.7);
+        }
+
+        #player-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 10px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #player-bar audio {
+            width: 90%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('podcast1')">Podcast I</a>
+            <a href="#" onclick="showPage('podcast2')">Podcast II</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <div id="home" class="content">
+        <h1>Selamat Datang di My Story Podcast</h1>
+        <p>Podcast dan daftar putar musik terbaik untuk menemani hari-harimu.</p>
+        <button class="btn-aesthetic" onclick="showPage('podcast1')">Mulai Dengarkan Podcast I</button>
+        <button class="btn-aesthetic" onclick="showPage('podcast2')">Mulai Dengarkan Podcast II</button>
+    </div>
+
+    <!-- Podcast I Section -->
+    <div id="podcast1" class="content">
+        <h2>Podcast I - Lofi Chill</h2>
+        <div class="music-list">
+            <script>
+                const lofiSongs = [
+                    { title: "Kamu beneran pergi", img: "1.png", src: "Kamu beneran pergi.mp3" },
+                    { title: "Kangen aku yang dulu", img: "2.png", src: "Kangen aku yang dulu.mp3" },
+                    { title: "Masih kangen ya", img: "3.png", src: "Masih kangen ya.mp3" },
+                    { title: "Salah pilih lagi ya", img: "4.png", src: "Salah pilih lagi ya.mp3" },
+                    { title: "Sulit untuk menjelaskan", img: "5.png", src: "Sulit untuk menjelaskan.mp3" },
+                    { title: "Tanpa bercerita", img: "6.png", src: "Tanpa bercerita.mp3" },
+                    { title: "Raindrops", img: "album1.jpg", src: "audio/lofi7.mp3" },
+                    { title: "Daydream", img: "album1.jpg", src: "audio/lofi8.mp3" },
+                    { title: "Lost in Thoughts", img: "album1.jpg", src: "audio/lofi9.mp3" },
+                    { title: "Silent Waves", img: "album1.jpg", src: "audio/lofi10.mp3" }
+                ];
+
+                lofiSongs.forEach(song => {
+                    document.write(`
+                        <div class="music-item">
+                            <img src="${song.img}" alt="${song.title}">
+                            <div><h3>${song.title}</h3></div>
+                            <button onclick="playMusic('${song.src}')">Play</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <!-- Podcast II Section -->
+    <div id="podcast2" class="content">
+        <h2>Podcast II - Jazz Vibes</h2>
+        <div class="music-list">
+            <script>
+                const jazzSongs = [
+                    { title: "Smooth Groove", img: "album2.jpg", src: "audio/jazz1.mp3" },
+                    { title: "Cool Evening", img: "album2.jpg", src: "audio/jazz2.mp3" },
+                    { title: "Jazz & Coffee", img: "album2.jpg", src: "audio/jazz3.mp3" },
+                    { title: "Late Night Jazz", img: "album2.jpg", src: "audio/jazz4.mp3" },
+                    { title: "Saxophone Dreams", img: "album2.jpg", src: "audio/jazz5.mp3" }
+                ];
+
+                jazzSongs.forEach(song => {
+                    document.write(`
+                        <div class="music-item">
+                            <img src="${song.img}" alt="${song.title}">
+                            <div><h3>${song.title}</h3></div>
+                            <button onclick="playMusic('${song.src}')">Play</button>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+    </div>
+
+    <div id="player-bar" class="player-bar">
+        <audio id="audio-player" controls>
+            <source id="audio-source" src="" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        function showPage(page) {
+            document.querySelectorAll('.content').forEach(p => p.style.display = 'none');
+            document.getElementById(page).style.display = 'flex';
+        }
+
+        function playMusic(src) {
+            const player = document.getElementById('audio-player');
+            document.getElementById('audio-source').src = src;
+            player.load();
+            player.play();
+            document.getElementById('player-bar').style.display = 'flex';
+        }
+    </script>
+
+</body>
+</html>
